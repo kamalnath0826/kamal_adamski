@@ -1,0 +1,4 @@
+<launch>
+  <node pkg="Kamal_manjit" type="publisher" name="new_publisher"/>
+  <node pkg="Kamal_manjit" type="subscriber" name="new_subscriber" output="screen"/>
+</launch>
