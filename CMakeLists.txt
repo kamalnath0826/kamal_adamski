@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(Kamal_manjit)
+project(kamal_adamski)
 
 ## Add support for C++11, supported in ROS Kinetic and newer
 # add_definitions(-std=c++11)
@@ -103,7 +103,7 @@ find_package(catkin REQUIRED COMPONENTS
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
 #  INCLUDE_DIRS include
-#  LIBRARIES Kamal_manjit
+#  LIBRARIES kamal_adamski
 #  CATKIN_DEPENDS roscpp
 #  DEPENDS system_lib
 )
@@ -121,7 +121,7 @@ include_directories(
 
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
-#   src/${PROJECT_NAME}/Kamal_manjit.cpp
+#   src/${PROJECT_NAME}/kamal_adamski.cpp
 # )
 
 ## Add cmake target dependencies of the library
@@ -142,3 +142,6 @@ add_executable(subscriber src/subscriber.cpp)
 add_dependencies(subscriber ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 target_link_libraries(subscriber ${catkin_LIBRARIES})
 
+add_executable(turtle_controller src/turtle_controller.cpp)
+add_dependencies(turtle_controller ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(turtle_controller ${catkin_LIBRARIES})
