@@ -8,7 +8,9 @@ double forward_control=0.0;
 double orientation_control=0.0;
 double k_pf , k_po;
 
-void posecallback(const turtlesim::Pose::ConstPtr& pose_msg)
+namespace kamal {
+ 
+void poseCallback(const turtlesim::Pose::ConstPtr& pose_msg)
 {
  double x_error = x_d - pose_msg->x;
  double y_error = y_d - pose_msg->y;
@@ -19,15 +21,15 @@ void posecallback(const turtlesim::Pose::ConstPtr& pose_msg)
  forward_control= k_pf* x_error;
 }
 
+}
 
-
-int main(int argc, char** argv)
-{
+int main(int argc, char** argv) {
   ros::init(argc, argv, "turtle_controller");
   ros::NodeHandle nh;
 
-  ros::Publisher control_pub = nh.advertise<geometry_msgs::Twist>("/turtle1/cmd_vel",10);
-  ros::Subscriber pose_sub = nh.subscribe("/turtle1/pose", 10, &posecallback);
+  ros::Publisher control_pub = nh.advertise<geometry_msgs::Twist>("/turtle1/cmd_vel", 10);
+  ros::Subscriber pose_sub = nh.subscribe("/turtle1/pose", 10, &poseCallback);
+ 
   nh.param("goal_x", x_d, 7.0);
   nh.param("goal_y", y_d, 7.0);
   nh.param("Surge_gain", k_pf, 1.0);
