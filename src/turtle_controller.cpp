@@ -2,7 +2,7 @@
 #include <turtlesim/Pose.h>
 #include <geometry_msgs/Twist.h>
 
-double x_d, y_d;
+double x_d, y_d, theta_d;
 
 double forward_control=0.0;
 double orientation_control=0.0;
@@ -12,13 +12,17 @@ namespace kamal {
  
 void poseCallback(const turtlesim::Pose::ConstPtr& pose_msg)
 {
+ 
  double x_error = x_d - pose_msg->x;
  double y_error = y_d - pose_msg->y;
+ theta_d= atan2(y_error,x_error);
+ double theta_error = theta_d - pose_msg->theta;
  //to do:
  // compute orientation_control= ....
  // Hint : use atan2(y_error, x_error)
 
  forward_control= k_pf* x_error;
+ orientation_control= -k_po*theta_error;
 }
 
 }
@@ -44,6 +48,7 @@ int main(int argc, char** argv) {
     geometry_msgs::Twist controls;
     controls.linear.x = forward_control;
     controls.angular.z = orientation_control;
+     
 
     control_pub.publish(controls);
 
