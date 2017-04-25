@@ -8,7 +8,7 @@ double forward_control=0.0;
 double orientation_control=0.0;
 double k_pf , k_po;
 
-void posecallback(const turtlesim::Pose::ConstPtr&pose_msg)
+void posecallback(const turtlesim::Pose::ConstPtr& pose_msg)
 {
  double x_error = x_d - pose_msg->x;
  double y_error = y_d - pose_msg->y;
