@@ -7,6 +7,11 @@ double x_d, y_d, theta_d;
 double forward_control=0.0;
 double orientation_control=0.0;
 double k_pf , k_po;
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 61f5fba82a5ae150384444ccf4bd62c05963c869
  
 void poseCallback(const turtlesim::Pose::ConstPtr& pose_msg)
 {
@@ -15,6 +20,7 @@ void poseCallback(const turtlesim::Pose::ConstPtr& pose_msg)
  double y_error = y_d - pose_msg->y;
  theta_d= atan2(y_error,x_error);
  double theta_error = theta_d - pose_msg->theta;
+<<<<<<< HEAD
 
 
  //forward_control= k_pf* x_error;
@@ -28,6 +34,18 @@ void poseCallback(const turtlesim::Pose::ConstPtr& pose_msg)
  }
 
 
+=======
+ 
+
+ forward_control= k_pf* x_error;
+ orientation_control= k_po*theta_error;
+ 
+ if(pow(x_error, 2.0) + pow(y_error, 2.0) < 0.1){
+   forward_control= 0.0;
+   orientation_control=0.0;
+}
+
+>>>>>>> 61f5fba82a5ae150384444ccf4bd62c05963c869
 
 
 int main(int argc, char** argv) {
