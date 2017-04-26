@@ -1,8 +1,9 @@
 <launch>
  <param name="goal_x" value=" 7.0"/>
-<param name="goal_y" value=" 7.0"/>
-<param name="Surge_gain" value=" 1.0"/>;
-<param name="Orientiation_gain" value ="1.0"/>
+ <param name="goal_y" value=" 7.0"/>
+ <param name="Surge_gain" value=" 1.0"/>;
+ <param name="Orientiation_gain" value ="10.0"/>
+
   <node pkg="turtlesim" type="turtlesim_node" name="extra_turtle"/>
   <node pkg="kamal_adamski" type="turtle_controller" name="extra_controller" output="screen"/>
 </launch>
