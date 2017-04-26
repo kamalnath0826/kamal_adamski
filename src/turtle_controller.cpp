@@ -17,12 +17,14 @@ void poseCallback(const turtlesim::Pose::ConstPtr& pose_msg)
  double y_error = y_d - pose_msg->y;
  theta_d= atan2(y_error,x_error);
  double theta_error = theta_d - pose_msg->theta;
- //to do:
- // compute orientation_control= ....
- // Hint : use atan2(y_error, x_error)
+ 
 
  forward_control= k_pf* x_error;
- orientation_control= -k_po*theta_error;
+ orientation_control= k_po*theta_error;
+ 
+ if(pow(x_error, 2.0) + pow(y_error, 2.0) < 0.1){
+   forward_control= 0.0;
+   orientation_control=0.0;
 }
 
 
