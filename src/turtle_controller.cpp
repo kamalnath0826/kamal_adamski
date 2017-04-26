@@ -8,7 +8,7 @@ double forward_control=0.0;
 double orientation_control=0.0;
 double k_pf , k_po;
 
-namespace kamal {
+
  
 void poseCallback(const turtlesim::Pose::ConstPtr& pose_msg)
 {
@@ -25,7 +25,7 @@ void poseCallback(const turtlesim::Pose::ConstPtr& pose_msg)
  orientation_control= -k_po*theta_error;
 }
 
-}
+
 
 int main(int argc, char** argv) {
   ros::init(argc, argv, "turtle_controller");
